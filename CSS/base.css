@@ -1,7 +1,9 @@
 * {
   box-sizing: border-box;
 }
-
+section {
+  display: none;
+}
 ul {
   max-width: 90%;
   margin: auto;
