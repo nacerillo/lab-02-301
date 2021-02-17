@@ -57,11 +57,19 @@ $('select').on('click', handleSelection);
 
 function handleSelection(){
   $('ul').empty();
+  console.log($(this).val());
+  if ($(this).val() == "default"){
+    console.log("yes");
+    $.ajax('./Data/page-1.json').then(callback);
+  }
+  else{
   hornPic.allHornPics.forEach(hornTile => {
     if(hornTile.keyword === $(this).val()){
       hornTile.renderHorns();
-    }
-  });
+      }
+
+   
+  });}
 
 }
 
