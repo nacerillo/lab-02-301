@@ -19,6 +19,9 @@ Pairs to switch in 2 hours
 
 - Actual time needed to complete: 1 hour 5 minutes
 
+Drive: Nick
+Navigator Jason
+
 2. Filter Images
 
 - Estimate of time needed to complete: 1 hour
@@ -29,12 +32,14 @@ Pairs to switch in 2 hours
 
 - Actual time needed to complete: 57 min
 
+Both
+
 3. Style Application
 
-- Estimate of time needed to complete: **\_**
+- Estimate of time needed to complete: **\_25 mintes**
 
-- Start time: **\_**
+- Start time: **\5:20**
 
-- Finish time: **\_**
+- Finish time: **\5:45**
 
-- Actual time needed to complete: **\_**
+- Actual time needed to complete: **\25 minutes**
