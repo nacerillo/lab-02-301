@@ -9,6 +9,8 @@ function hornPic(title, image_url, description, keyword) {
   hornPic.allHornPics.push(this);
 }
 hornPic.allHornPics = [];
+const keyarray = [];
+
 
 hornPic.prototype.renderHorns = function(){
   // When we render with Jquery, we can use templates
@@ -16,16 +18,30 @@ hornPic.prototype.renderHorns = function(){
 
   //1. copy an existing element
   const $liCopy = $('#photo-template').clone();
+  //const $opt = $('#def').clone();
   console.log($liCopy);
   $liCopy.removeAttr('id');
   $liCopy.find('h2').text(this.title);
   $liCopy.find('p').text(this.description);
   $liCopy.find('img').attr('src', this.image_url);
-  // console.log(this);
+
+  //$opt.find('option').attr('value',this.keyword);
+  //$opt.find('option').text(this.keyword);
+  console.log(this);
   $liCopy.addClass(this.keyword);
   $('ul').append($liCopy);
+  if(!keyarray.includes(this.keyword)){
+    keyarray.push(this.keyword);
+  }
+  //$('select').append($opt);
 };
+function generateOptions(){
+  keyarray.forEach(key => {
+    var opt = $(`<option value = ${key}>${key}</option>`);
+    $('select').append(opt);
 
+  });
+}
 $.ajax('./Data/page-1.json').then(callback);
 
 function callback(retreivedImages) {
@@ -35,12 +51,27 @@ function callback(retreivedImages) {
   });
 //  === 
   hornPic.allHornPics.forEach(hornPic => hornPic.renderHorns());
-
+  generateOptions();
 }
 
+$('select').on('click', handleSelection);
+
+function handleSelection(){
+  $('ul').empty();
+  hornPic.allHornPics.forEach(hornTile => {
+    if(hornTile.keyword === $(this).val()){
+      hornTile.renderHorns();
+    }
+  });
+  //do sh*t with the selected item 
+}
+
+console.log(keyarray);
 
 // $('button:nth-of-type(1)').on('click', handleClickingOnOdieButton);
 // $('button:nth-of-type(2)').on('click', handleClickingOnCliffordButton);
+$('select').on('change',handleSelection);
+
 
 // function handleClickingOnOdieButton(){
 //   // Hide and show way: hide all and then show some : HTML focused

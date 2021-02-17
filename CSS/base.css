@@ -1,9 +1,19 @@
+body {
+  background-color: hotpink;
+}
 * {
   box-sizing: border-box;
 }
 section {
   display: none;
 }
+
+h1 {
+  font-family: "Big Shoulders Stencil Text", cursive;
+  font-size: larger;
+  text-align: center;
+}
+
 ul {
   max-width: 90%;
   margin: auto;
