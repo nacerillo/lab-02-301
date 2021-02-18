@@ -43,3 +43,33 @@ Both
 - Finish time: **\5:45**
 
 - Actual time needed to complete: **\25 minutes**
+
+Number and name of feature: Templating Feature 2
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 2:07 pm
+
+Finish time: 2:28 pm
+
+Actual time needed to complete: 21 minutes
+
+Number and name of feature: Pagnation Feature 1
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 2:32 pm
+
+Finish time: 3:28 pm
+
+Actual time needed to complete: 1 hour
+
+Number and name of feature: Sort Feature 4
+
+Estimate of time needed to complete: 90 min
+
+Start time: 3:55 pm
+
+Finish time: 5:55 pm
+
+Actual time needed to complete: 2 hours 

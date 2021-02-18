@@ -1,44 +1,27 @@
 'use strict';
 
 //TODO: filtering
-function hornPic(title, image_url, description, keyword) {
+function hornPic(title, image_url, description, keyword, horns) {
   this.title = title;
   this.image_url = image_url;
   this.description = description;
   this.keyword = keyword;
+  this.horns = horns;
   hornPic.allHornPics.push(this);
 }
 hornPic.allHornPics = [];
 let keyarray = [];
 
-
 hornPic.prototype.renderHorns = function(){
   // When we render with Jquery, we can use templates
   // we can use pre-existing pieces of the page to build similar pieces.
-  /*const $liCopy = $('#photo-template').clone();
-
-  console.log($liCopy);
-  $liCopy.removeAttr('id');
-  $liCopy.find('h2').text(this.title);
-  $liCopy.find('p').text(this.description);
-  $liCopy.find('img').attr('src', this.image_url);
-
-
-  console.log(this);
-  $liCopy.addClass(this.keyword);
-  $('ul').append($liCopy);
-  if(!keyarray.includes(this.keyword)){
-    keyarray.push(this.keyword);
-  }   */
-  //$('select').append($opt);
-  console.log(this);
+  // console.log(this);
   const li = $('#mustache-template-li').html();
   const mustache_output = Mustache.render(li,this);
   $('ul').append(mustache_output);
   if(!keyarray.includes(this.keyword)){
     keyarray.push(this.keyword);
   }   
-  //$('select').append($opt);
 };
 function generateOptions(){
   $('option:nth-child(n+2)').remove();
@@ -49,27 +32,21 @@ function generateOptions(){
   });
 }
 $.ajax('./Data/page-1.json').then(callback);
-//$.ajax('./Data/page-2.json').then(callback);
 function callback(retreivedImages) {
-  // console.log(retreivedImages);
   $('ul').empty();
   hornPic.allHornPics = [];
   keyarray = [];
   retreivedImages.forEach(hornJsonObject => {
-    new hornPic(hornJsonObject.title, hornJsonObject.image_url, hornJsonObject.description, hornJsonObject.keyword);
+    new hornPic(hornJsonObject.title, hornJsonObject.image_url, hornJsonObject.description, hornJsonObject.keyword, hornJsonObject.horns);
   });
-
   hornPic.allHornPics.forEach(hornPic => hornPic.renderHorns());
   generateOptions();
 }
-
-//$('select').on('click', handleSelection);
 
 function handleSelection(){
   $('ul').empty();
   console.log($(this).val());
   if ($(this).val() == "default"){
-  //  console.log("yes");
     $.ajax('./Data/page-1.json').then(callback);
   }
   else{
@@ -77,11 +54,9 @@ function handleSelection(){
     if(hornTile.keyword === $(this).val()){
       console.log(hornTile);
       hornTile.renderHorns();
-      
-     // console.log("this worked");
       }
       else{
-       // console.log("nope",hornTile.keyword,$(this).val() );
+
        return 0; 
       }
    
@@ -91,7 +66,6 @@ function handleSelection(){
 
 
 function handlePageChange(){
- //console.log( $(this)[0].id)
  $('ul').empty();
  if($(this)[0].id === "page-1"){
   $.ajax('./Data/page-1.json').then(callback);
@@ -105,12 +79,28 @@ function handlePageChange(){
  
 }
 
-//console.log(keyarray);
 $('select').on('change',handleSelection);
-
-//Pages listener
 $('#page-1').on('click',handlePageChange);
 $('#page-2').on('click',handlePageChange);
 
-
-
+$(document).ready(function() {
+  $('input[type=radio]').click(function(){
+    console.log(hornPic.allHornPics);
+    hornPic.allHornPics.sort((a,b) =>  {
+      console.log($(this));
+      console.log(a[$(this).val()]);
+       if(a[$(this).val()] < b[$(this).val()]){
+         return -1;
+       }
+       else if(a[$(this).val()] > b[$(this).val()]){
+         return 1;
+       }
+       else{
+         return 0;
+       }
+    })
+    console.log(hornPic.allHornPics);
+    $('ul').empty();
+    hornPic.allHornPics.forEach(hornPic => hornPic.renderHorns());
+  });
+});
