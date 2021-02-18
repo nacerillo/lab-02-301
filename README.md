@@ -73,3 +73,13 @@ Start time: 3:55 pm
 Finish time: 5:55 pm
 
 Actual time needed to complete: 2 hours 
+
+Number and name of feature: Templating Feature 3
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 6:05 pm
+
+Finish time: 6:25 pm
+
+Actual time needed to complete: 25 minutes
