@@ -4,32 +4,33 @@ body {
 * {
   box-sizing: border-box;
 }
-section {
+/* section {
   display: none;
-}
+} */
 
 h1 {
   font-family: "Big Shoulders Stencil Text", cursive;
   font-size: larger;
-  text-align: center;
+  /* text-align: center; */
 }
 
 ul {
   max-width: 90%;
   margin: auto;
-  display: flex;
+  /* display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 li {
     background-color: plum;
-    text-align: center;
+    /* text-align: center; */
     padding: 20px;
     margin: 10px;
     width: 300px;
     height: 250px;
+    border-radius: 15px;
 }
 
 img {
@@ -37,6 +38,7 @@ img {
   height: 150px;
   margin: auto;
   display: block;
+  border-radius: 15px;
 }
 
 #templates {
