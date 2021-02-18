@@ -1,0 +1,17 @@
+section {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+ul {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+li {
+  text-align: center;
+}
